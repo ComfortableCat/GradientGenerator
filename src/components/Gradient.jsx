@@ -40,17 +40,17 @@ export default function Gradient() {
       cssColoursList = cssColoursList + `${colour}, `;
     }
   });
-
+  const style = `${background.type}-gradient(${
+    background.type === "linear"
+      ? `${background.direction}deg,`
+      : background.type === "radial"
+      ? `${background.shape} at ${background.center[0]}% ${background.center[1]}%,`
+      : ""
+  } ${cssColoursList})`;
   return (
     <div
       style={{
-        background: `${background.type}-gradient(${
-          background.type === "linear"
-            ? `${background.direction}deg,`
-            : background.type === "radial"
-            ? `${background.shape} at ${background.center[0]}% ${background.center[1]}%,`
-            : ""
-        } ${cssColoursList})`,
+        background: style,
       }}
       className={`w-[100vw] h-[100vh] flex flex-col ${
         !minimise ? `justify-center` : `justify-end`
@@ -68,11 +68,28 @@ export default function Gradient() {
         />
         {!minimise && (
           <>
-            <select name="type" onChange={handleChange}>
-              <option value="linear">Linear</option>
-              <option value="radial">Radial</option>
-              <option value="conic">Conic</option>
-            </select>
+            <p
+              onClick={() => {
+                navigator.clipboard.writeText(style);
+                alert("Copied to clipboard");
+              }}
+              className="hover:bg-slate-200"
+            >
+              Copy CSS to clipboard
+            </p>
+            <div className="flex justify-between">
+              <label htmlFor="type">Type:</label>
+              <select
+                id="type"
+                name="type"
+                onChange={handleChange}
+                className="w-32"
+              >
+                <option value="linear">Linear</option>
+                <option value="radial">Radial</option>
+                <option value="conic">Conic</option>
+              </select>
+            </div>
             {background.type === "linear" ? (
               <div>
                 <label htmlFor="directionInput">Direction: </label>
