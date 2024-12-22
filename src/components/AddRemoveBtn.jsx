@@ -9,12 +9,20 @@ export default function AddRemoveBtn({ background, setBackground }) {
           const newColourInput = [...background.colours, { colour: "#000000" }];
 
           const colours = newColourInput.map((colour, i) => {
+            let newPosition = 0;
+            if (colour.position || colour.position === 0) {
+              newPosition =
+                colour.position /
+                (background.colours.length / (background.colours.length - 1));
+            } else {
+              newPosition = 100;
+            }
             return {
               ...colour,
-              ...{ position: (i * 100) / background.colours.length },
+              ...{ position: newPosition.toFixed(0) },
             };
           });
-
+          console.log(colours);
           setBackground({ ...background, ...{ colours: colours } });
         }}
       >

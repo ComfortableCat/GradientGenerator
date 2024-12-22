@@ -14,11 +14,10 @@ export default function PositionCheckbox({ background, setBackground }) {
                   ...{ position: (i * 100) / (background.colours.length - 1) },
                 };
               });
-              console.log(colours);
+
               setBackground({ ...background, ...colours });
             }}
             onChange={() => {
-              console.log("changeEvent");
               const auto = { auto: !background.auto };
               setBackground({ ...background, ...auto });
             }}
