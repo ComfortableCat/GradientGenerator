@@ -1,8 +1,8 @@
-### Gradient Generator
+# Gradient Generator
 
 This app allows users to create custom gradient backgrounds and copy the CSS to recreate the background they designed.
 
-# Features
+### Features
 
 - Supports different Types of gradient (linear, radial & conic)
 - Supports as many colours the user can handle (all rendering is client side so could cause problems if they push to extreme)
@@ -15,7 +15,7 @@ This app allows users to create custom gradient backgrounds and copy the CSS to 
 - center of radial gradient is changable
 - menu can be minimised to allow for better view of gradient
 
-# Known bugs
+### Known bugs
 
 - On mobile the minimised menu can hide bellow the native navigation
 
@@ -29,7 +29,7 @@ These instructions are for a vercel setup
 - Deploy
 - have fun
 
-# Dev Reflection
+### Dev Reflection
 
 This project was fun and caused me to learn a lot of new to me CSS and refreshed my knowledge on inline styles in react and next
 I could've added more features if I had been more methodical with research and planning as I had started with a scope to broad causing set backs due to lack of understanding
