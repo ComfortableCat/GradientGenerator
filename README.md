@@ -29,7 +29,7 @@ These instructions are for a vercel setup
 - Deploy
 - have fun
 
-### Dev Reflection
+## Dev Reflection
 
 This project was fun and caused me to learn a lot of new to me CSS and refreshed my knowledge on inline styles in react and next
 I could've added more features if I had been more methodical with research and planning as I had started with a scope to broad causing set backs due to lack of understanding
