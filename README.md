@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Gradient Generator
 
-## Getting Started
+This app allows users to create custom gradient backgrounds and copy the CSS to recreate the background they designed.
 
-First, run the development server:
+# Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Supports different Types of gradient (linear, radial & conic)
+- Supports as many colours the user can handle (all rendering is client side so could cause problems if they push to extreme)
+- Allows for manual positioning of Colours through sliders
+- Positioning stays relative on adding more colours
+- Positioning is the same on removing colours
+- Allows users to copy Css to clipboard froma single click
+- users can choose circle or ellipse for radial gradient
+- angle of linear gradient is changeable
+- center of radial gradient is changable
+- menu can be minimised to allow for better view of gradient
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Known bugs
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- On mobile the minimised menu can hide bellow the native navigation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup your own site
 
-## Learn More
+These instructions are for a vercel setup
 
-To learn more about Next.js, take a look at the following resources:
+- Fork this repository
+- Signin to vercel and Add new project
+- link your github if not already and select the forked repository
+- Deploy
+- have fun
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Dev Reflection
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project was fun and caused me to learn a lot of new to me CSS and refreshed my knowledge on inline styles in react and next
+I could've added more features if I had been more methodical with research and planning as I had started with a scope to broad causing set backs due to lack of understanding
+I hope people can enjoy this project

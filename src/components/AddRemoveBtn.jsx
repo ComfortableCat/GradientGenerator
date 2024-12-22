@@ -22,7 +22,6 @@ export default function AddRemoveBtn({ background, setBackground }) {
               ...{ position: newPosition.toFixed(0) },
             };
           });
-          console.log(colours);
           setBackground({ ...background, ...{ colours: colours } });
         }}
       >
