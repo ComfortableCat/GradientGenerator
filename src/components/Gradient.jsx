@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import Position from "./Position";
+import PositionCheckbox from "./Checkbox";
+import AddRemoveBtn from "./AddRemoveBtn";
 
 export default function Gradient() {
   const [minimise, setMinimise] = useState(false);
@@ -9,7 +12,11 @@ export default function Gradient() {
     direction: "45",
     shape: "ellipse",
     center: ["50", "50"],
-    colours: ["#ff0000", "#861C87"],
+    auto: true,
+    colours: [
+      { colour: "#ff0000", position: 0 },
+      { colour: "#861C87", position: 100 },
+    ],
   });
 
   function handleChange(event) {
@@ -19,25 +26,22 @@ export default function Gradient() {
     });
   }
   function handleColourChange(newColour, index) {
-    const colours = {
-      colours: background.colours.map((colour, i) => {
-        if (index === i) {
-          return newColour;
-        } else {
-          return colour;
-        }
-      }),
-    };
+    const colours = { colours: background.colours };
+    colours.colours[index].colour = newColour;
     setBackground((background) => {
       return { ...background, ...colours };
     });
   }
   let cssColoursList = "";
   background.colours.forEach((colour, i) => {
-    if (i === background.colours.length - 1) {
-      cssColoursList = cssColoursList + colour;
+    if (background.auto === true) {
+      cssColoursList = cssColoursList + colour.colour;
     } else {
-      cssColoursList = cssColoursList + `${colour}, `;
+      cssColoursList =
+        cssColoursList + colour.colour + " " + colour.position + "%";
+    }
+    if (i !== background.colours.length - 1) {
+      cssColoursList = cssColoursList + `, `;
     }
   });
   const style = `${background.type}-gradient(${
@@ -70,7 +74,7 @@ export default function Gradient() {
           <>
             <p
               onClick={() => {
-                navigator.clipboard.writeText(style);
+                navigator.clipboard.writeText(`background: ${style}`);
                 alert("Copied to clipboard");
               }}
               className="hover:bg-slate-200"
@@ -90,6 +94,10 @@ export default function Gradient() {
                 <option value="conic">Conic</option>
               </select>
             </div>
+            <PositionCheckbox
+              background={background}
+              setBackground={setBackground}
+            />
             {background.type === "linear" ? (
               <div>
                 <label htmlFor="directionInput">Direction: </label>
@@ -146,36 +154,24 @@ export default function Gradient() {
                   <input
                     type="color"
                     name={`col${i + 1}`}
-                    defaultValue={background.colours[i]}
+                    defaultValue={background.colours[i].colour}
                     className="w-8 h-8 m-0 p-0"
                     onChange={(event) =>
                       handleColourChange(event.target.value, i)
                     }
                   />
+                  <Position
+                    background={background}
+                    setBackground={setBackground}
+                    i={i}
+                  />
                 </div>
               );
             })}
-            <button
-              onClick={() => {
-                const newColourInput = {
-                  colours: [...background.colours, "#000000"],
-                };
-                setBackground({ ...background, ...newColourInput });
-              }}
-            >
-              Add colour
-            </button>
-            {background.colours.length > 2 && (
-              <button
-                onClick={() => {
-                  const updatedColours = { colours: [...background.colours] };
-                  updatedColours.colours.pop();
-                  setBackground({ ...background, ...updatedColours });
-                }}
-              >
-                Remove Colour
-              </button>
-            )}
+            <AddRemoveBtn
+              background={background}
+              setBackground={setBackground}
+            />
           </>
         )}
       </div>
